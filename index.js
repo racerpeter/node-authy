@@ -92,15 +92,17 @@ Authy.prototype.verify = function (id, token, force, callback) {
     });
 };
 
-Authy.prototype.request_sms = function (id, force, callback) {
-    var qs = {
-        api_key: this.apiKey
-    };
+Authy.prototype.request_sms = function (id, force_or_callback_or_extra, callback) {
+    var arg2isObject = force_or_callback_or_extra === Object(force_or_callback_or_extra);
+    var qs = (arg2isObject ? force_or_callback_or_extra : {}) || {};
+    qs.api_key: this.apiKey;
 
     if (arguments.length > 2) {
-        qs.force = force;
+        if(!arg2isObject) {
+            qs.force = force_or_callback_or_extra;
+        }
     } else {
-        callback = force;
+        callback = force_or_callback_or_extra;
     }
 
     request.get({
