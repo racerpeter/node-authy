@@ -93,7 +93,8 @@ Authy.prototype.verify = function (id, token, force, callback) {
 };
 
 Authy.prototype.request_sms = function (id, force_or_callback_or_extra, callback) {
-    var arg2isObject = true; // Temporary fix... // force_or_callback_or_extra === Object(force_or_callback_or_extra);
+    // Temporary fix... force_or_callback_or_extra === Object(force_or_callback_or_extra);
+    var arg2isObject = true;
     var qs = (arg2isObject ? force_or_callback_or_extra : {}) || {};
     qs.api_key: this.apiKey;
 
@@ -124,7 +125,8 @@ Authy.prototype.request_sms = function (id, force_or_callback_or_extra, callback
 };
 
 Authy.prototype.request_call = function (id, force_or_callback_or_extra, callback) {
-    var arg2isObject = true; // Temporary fix... // force_or_callback_or_extra === Object(force_or_callback_or_extra);
+    // Temporary fix... force_or_callback_or_extra === Object(force_or_callback_or_extra);
+    var arg2isObject = true;
     var qs = (arg2isObject ? force_or_callback_or_extra : {}) || {};
     qs.api_key: this.apiKey;
 
